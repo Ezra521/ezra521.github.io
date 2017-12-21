@@ -1,212 +1,574 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>回忆录</title>
-<link type="text/css" rel="stylesheet" href="renxi/default.css">
-<script type="text/javascript" src="renxi/jquery.min.js"></script>
-<script type="text/javascript" src="renxi/jscex.min.js"></script>
-<script type="text/javascript" src="renxi/jscex-parser.js"></script>
-<script type="text/javascript" src="renxi/jscex-jit.js"></script>
-<script type="text/javascript" src="renxi/jscex-builderbase.min.js"></script>
-<script type="text/javascript" src="renxi/jscex-async.min.js"></script>
-<script type="text/javascript" src="renxi/jscex-async-powerpack.min.js"></script>
-<script type="text/javascript" src="renxi/functions.js" charset="utf-8"></script>
-<script type="text/javascript" src="renxi/love.js" charset="utf-8"></script>
-<style type="text/css">
-<!--
-.STYLE1 {
-	color: #666666
-}
--->
-</style>
+	<title>Ezra'Blog</title>
+	<!-- Meta Tags -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="" />
+	<script type="application/x-javascript">
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- //Meta Tags -->
+	<!-- Style Sheets -->
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="css/font-awesome.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- //Style Sheets -->
+	<!--web-fonts-->
+	<link href="http://fonts.googleapis.com/css?family=Josefin+Sans:100,300,400,600,700" rel="stylesheet">
+	<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+	<!--//web-fonts-->
 </head>
+
 <body>
-<audio autoplay="autopaly">
-  <source src="renxi.mp3" type="audio/mp3" />
-</audio>
-<div id="main">
-  <div id="error">本页面采用HTML5编辑，目前您的浏览器无法显示，请换成谷歌(<a href="http://www.google.cn/chrome/intl/zh-CN/landing_chrome.html?hl=zh-CN&brand=CHMI">Chrome</a>)或者火狐(<a href="http://firefox.com.cn/download/">Firefox</a>)浏览器，或者其他游览器的最新版本。</div>
-  <div id="wrap">
-    <div id="text">
-      <div id="code"> <font color="#FF0000"> <span class="say">亲爱的辅导员，很高兴认识你！</span><br>
-        <span class="say"> </span><br>
-        <span class="say"> 我知道今年是您最后一年带我们了，但是我们的人生以后都会有您的烙印</span><br>
-        <span class="say"> </span><br>
-        <span class="say">有时候感觉您啰嗦，但是这是因为越在乎所以越怕失去</span><br>
-        <span class="say">因为您就像天使，带领我们一路成长</span><br>
-        <span class="say">感谢您这两年半给我们带来的快乐</span><br>
-        <span class="say">虽然我们即将离开校园，但是您的位置一直在我们的心里！</span><br>
-        <span class="say"> </span><br>
-        <span class="say"><span class="space"></span> --计算机132（2016年9月10日）--</span> </font>
-        </p>
-      </div>
-    </div>
-    <div id="clock-box"> <span class="STYLE1"></span><font color="#33CC00">亲爱辅导员，我们认识您</font> <span class="STYLE1">已经是……</span>
-      <div id="clock"></div>
-    </div>
-    <canvas id="canvas" width="1100" height="680"></canvas>
-  </div>
-</div>
-<script>
-    </script>
-<script>
-    (function(){
-        var canvas = $('#canvas');
-		
-        if (!canvas[0].getContext) {
-            $("#error").show();
-            return false;        }
+	<!-- banner -->
+	<div class="banner" id="home">
+		<div class="container">
+			<!-- header -->
+			<header>
 
-        var width = canvas.width();
-        var height = canvas.height();        
-        canvas.attr("width", width);
-        canvas.attr("height", height);
-        var opts = {
-            seed: {
-                x: width / 2 - 20,
-                color: "rgb(190, 26, 37)",
-                scale: 2
-            },
-            branch: [
-                [535, 680, 570, 250, 500, 200, 30, 100, [
-                    [540, 500, 455, 417, 340, 400, 13, 100, [
-                        [450, 435, 434, 430, 394, 395, 2, 40]
-                    ]],
-                    [550, 445, 600, 356, 680, 345, 12, 100, [
-                        [578, 400, 648, 409, 661, 426, 3, 80]
-                    ]],
-                    [539, 281, 537, 248, 534, 217, 3, 40],
-                    [546, 397, 413, 247, 328, 244, 9, 80, [
-                        [427, 286, 383, 253, 371, 205, 2, 40],
-                        [498, 345, 435, 315, 395, 330, 4, 60]
-                    ]],
-                    [546, 357, 608, 252, 678, 221, 6, 100, [
-                        [590, 293, 646, 277, 648, 271, 2, 80]
-                    ]]
-                ]] 
-            ],
-            bloom: {
-                num: 700,
-                width: 1080,
-                height: 650,
-            },
-            footer: {
-                width: 1200,
-                height: 5,
-                speed: 10,
-            }
-        }
+				<div class="header-bottom-agileits">
+					<div class="w3-logo">
+						<h1><a href="index.html">个人简历<span class="sub-logo">个人简历</span></a></h1>
+					</div>
+					<!-- navigation -->
+					<nav class="navbar navbar-default shift">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+							    aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				  </button>
 
-        var tree = new Tree(canvas[0], width, height, opts);
-        var seed = tree.seed;
-        var foot = tree.footer;
-        var hold = 1;
+						</div>
 
-        canvas.click(function(e) {
-            var offset = canvas.offset(), x, y;
-            x = e.pageX - offset.left;
-            y = e.pageY - offset.top;
-            if (seed.hover(x, y)) {
-                hold = 0; 
-                canvas.unbind("click");
-                canvas.unbind("mousemove");
-                canvas.removeClass('hand');
-            }
-        }).mousemove(function(e){
-            var offset = canvas.offset(), x, y;
-            x = e.pageX - offset.left;
-            y = e.pageY - offset.top;
-            canvas.toggleClass('hand', seed.hover(x, y));
-        });
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav">
+								<li><a class="active" href="index.html">主页</a></li>
+								<li><a class="scroll" href="#about">关于</a></li>
+								<li><a class="scroll" href="#skills">技能</a></li>
+								<li><a class="scroll" href="#portfolio">组合管理</a></li>
+								<li><a class="scroll" href="#contact">联系方式</a></li>
+							</ul>
 
-        var seedAnimate = eval(Jscex.compile("async", function () {
-            seed.draw();
-            while (hold) {
-                $await(Jscex.Async.sleep(10));
-            }
-            while (seed.canScale()) {
-                seed.scale(0.95);
-                $await(Jscex.Async.sleep(10));
-            }
-            while (seed.canMove()) {
-                seed.move(0, 2);
-                foot.draw();
-                $await(Jscex.Async.sleep(10));
-            }
-        }));
+						</div>
+						<!-- /.navbar-collapse -->
 
-        var growAnimate = eval(Jscex.compile("async", function () {
-            do {
-    	        tree.grow();
-                $await(Jscex.Async.sleep(10));
-            } while (tree.canGrow());
-        }));
+					</nav>
+				</div>
+				<div class="clearfix"></div>
+				<!-- //navigation -->
+			</header>
+			<!-- //header -->
+			<div class="banner-text-w3-agileits">
+				<h5>您好！我是</h5>
+				<h2><span>武</span>乾坤 <span>E</span>zra</h2>
+				<p>AI Engineer & Data Analyst</p>
+				<div class="botton">
+					<a href="#about" class="scroll">关于我 <span class="fa fa-caret-right"></span></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //banner -->
+	<!--about-->
+	<div class="about-w3layouts" id="about">
+		<div class="container">
+			<div class="tittle-agileinfo">
+				<div class="title-wthree">
+					<h5 class="title-w3"><span>01</span>关于我</h5>
+					<div class="clearfix"></div>
+				</div>
+				<div class="about-top">
+					<h3 class="subheading-agileits-w3layouts">个性签名</h3>
+					<p class="para-agileits-w3layouts">爱就是爱，伟大的爱情到头来也只是爱,
+					碧空尽的深处谁也不曾存在 追怀追怀！ </p>
+				</div>
+			</div>
+			<div class="col-md-4 about-left-agileits">
+				<div class="services-grids social">
+					<a class="fa fa-delicious" aria-hidden="true"></a>
+					<p class="para-agileits-w3layouts">世间的任何事物，追求时候的兴致总要比享用时候的兴致浓烈。</p>
+					<div class="clearfix"></div>
+					<h6>生活态度</h6>
+				</div>
+				<div class="services-grids">
+					<a class="fa fa-globe" aria-hidden="true"></a>
+					<p class="para-agileits-w3layouts">恋爱本就不是一件轻松的事情，可别偷懒了！</p>
+					<h6>爱情观</h6>
+				</div>
+				<div class="services-grids">
+					<a class="fa fa-desktop" aria-hidden="true"></a>
+					<p class="para-agileits-w3layouts">冬天到了，春天还会远吗？</p>
+					<h6>信念</h6>
+				</div>
+				<div class="services-grids">
+					<a class="fa fa-mobile" aria-hidden="true"></a>
+					<p class="para-agileits-w3layouts">时间最不偏私：给任何人都是二十四小时；</p><p class="para-agileits-w3layouts">时间也最偏私：给任何人都不是二十四小时。</p>
+					<h6>时间</h6>
+				</div>
+				<div class="clearfix"></div>
+			</div>
 
-        var flowAnimate = eval(Jscex.compile("async", function () {
-            do {
-    	        tree.flower(2);
-                $await(Jscex.Async.sleep(10));
-            } while (tree.canFlower());
-        }));
+			<div class="col-md-8 about-right">
+				<div class="about-border-w3ls">
+				</div>
+				<div class="person-info-agileits-w3layouts">
+					<p class="para-agileits-w3layouts"><span>嗨！，您好，我是武乾坤 </span>很荣幸您访问我的网站，遇见你真好！“光，落在你脸上，可爱一如往常。”亲爱的朋友我不愿让你一个人，一个人在人海浮沉。我不愿你独自走过风雨的时分。
+					我不愿让你一个人承受这世界的残忍。我不愿眼泪陪你到永恒” 爱你，朋友！​​​​</p>
+					<ul>
+						<li><span>Name</span>: 武乾坤</li>
+						<li><span>Age</span>: 23</li>
+						<li><span>Experience</span>: 学生</li>
+						<li><span>Email</span>: <a href="mailto:info@example.com">zgahwuqiankun@qq.com</a></li>
+						<li><span>Phone</span>: 18621063693</li>
+						<li><span>Website</span>: <a href="#">www.ezra521.xyz</a></li>
+						<li><span>Address</span>: 上海市杨浦区军工路516号上海理工大学</li>
+						<li><a href="https://github.com/Ezra521" class="botton-w3ls">github主页</a>
+						</li>
+					</ul>
+					<div class="clearfix"></div>
 
-        var moveAnimate = eval(Jscex.compile("async", function () {
-            tree.snapshot("p1", 240, 0, 610, 680);
-            while (tree.move("p1", 500, 0)) {
-                foot.draw();
-                $await(Jscex.Async.sleep(10));
-            }
-            foot.draw();
-            tree.snapshot("p2", 500, 0, 610, 680);
+					<div class="pos-w3ls">
+						<h4><span class="red-w3ls">Get</span> in touch</h4>
+						<div class="button-w3layouts"><a href="#contact" class="scroll">请联系我</a></div>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!--//about-->
+	<!--education-->
+	<div class="display-w3lsagile">
+		<div class="col-md-7 col-sm-7 edu-img-agileits">
+		</div>
+		<div class="col-md-5 col-sm-5 display-grid-w3lsagile display-grid-1-w3lsagile">
 
-            // 会有闪烁不得意这样做, (＞﹏＜)
-            canvas.parent().css("background", "url(" + tree.toDataURL('image/png') + ")");
-            canvas.css("background", "#ffe");
-            $await(Jscex.Async.sleep(300));
-            canvas.css("background", "none");
-        }));
+			<!-- Scrolling-Articles -->
+			<div class="activity_box agileits w3layouts">
+				<div class="title-wthree">
+					<h5 class="title-w3"><span>02</span>教育经历</h5>
+					<div class="clearfix"></div>
+				</div>
+				<div class="scrollbar agileits w3layouts" id="style-2">
+					<div class="activity-row agileits w3layouts">
+						<div class="activity-img agileits w3layouts">
+							<h6>2017-2020</h6>
+						</div>
+						<div class="activity-desc agileits w3layouts">
+							<h5>上海理工大学</h5>
+							<p class="para-agileits-w3layouts">每一艘开往上海的轮船都必须在这所大学的视线内经过；在这样一个校园里，任何有思想的学生都不能不感到自己生活在一个大的世界里。</p>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="activity-row agileits w3layouts">
+						<div class="activity-img agileits w3layouts">
+							<h6>2013-2017</h6>
+						</div>
+						<div class="activity-desc agileits w3layouts">
+							<h5>安徽工程大学</h5>
+							<p class="para-agileits-w3layouts">总是在不知不觉中，就不由自主地想起了我的那个江南。脱去一身的俗气,忘却一世的贪念,翻过几座青山，渡过几条大河，路过几个湖泊，再转过几个水湾，就到了我心中日思梦想的那个江南</p>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
+			<!-- //Scrolling-Articles -->
 
-        var jumpAnimate = eval(Jscex.compile("async", function () {
-            var ctx = tree.ctx;
-            while (true) {
-                tree.ctx.clearRect(0, 0, width, height);
-                tree.jump();
-                foot.draw();
-                $await(Jscex.Async.sleep(25));
-            }
-        }));
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<!--//education-->
+	<!--experience-->
+	<div class="display-w3lsagile">
+		<div class="col-md-7 col-sm-7 exp-img-agileits">
+		</div>
+		<div class="col-md-5 col-sm-5 display-grid-w3lsagile display-grid-1-w3lsagile">
 
-        var textAnimate = eval(Jscex.compile("async", function () {
-		    var together = new Date();
-		    together.setFullYear(2013,12,2); 			//时间年月日
-		    together.setHours(16);						//小时	
-		    together.setMinutes(53);					//分钟 
-		    together.setSeconds(0);					//秒前一位
-		    together.setMilliseconds(2);				//秒第二位
+			<!-- Scrolling-Articles -->
+			<div class="activity_box agileits w3layouts">
+				<div class="title-wthree work_box">
+					<h5 class="title-w3"><span>03</span>工作经历</h5>
+					<div class="clearfix"></div>
+				</div>
+				<div class="scrollbar agileits w3layouts" id="style-1">
+					<div class="activity-row agileits w3layouts">
+						<div class="activity-img agileits w3layouts">
+							<h6>1994-今</h6>
+						</div>
+						<div class="activity-desc agileits w3layouts">
+							<h5>人生的轨迹</h5>
+							<p class="para-agileits-w3layouts">从我出生到现在我一直为着祖国的繁荣和昌盛贡献自己的力量，我每天都在惆怅，祖国的未统一的和世界的未和平！</p>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="activity-row agileits w3layouts">
+						<div class="activity-img agileits w3layouts">
+							<h6>1994-今</h6>
+						</div>
+						<div class="activity-desc agileits w3layouts">
+							<h5>人生的轨迹</h5>
+							<p class="para-agileits-w3layouts">从我出生到现在我一直为着祖国的繁荣和昌盛贡献自己的力量，我每天都在惆怅，祖国的未统一的和世界的未和平！</p>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="activity-row agileits w3layouts">
+						<div class="activity-img agileits w3layouts">
+							<h6>2012-2014</h6>
+						</div>
+						<div class="activity-desc agileits w3layouts">
+							<h5>人生的轨迹</h5>
+							<p class="para-agileits-w3layouts">从我出生到现在我一直为着祖国的繁荣和昌盛贡献自己的力量，我每天都在惆怅，祖国的未统一的和世界的未和平！</p>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="activity-row agileits w3layouts">
+						<div class="activity-img agileits w3layouts">
+							<h6>2008-2011</h6>
+						</div>
+						<div class="activity-desc agileits w3layouts">
+							<h5>人生的轨迹</h5>
+							<p class="para-agileits-w3layouts">从我出生到现在我一直为着祖国的繁荣和昌盛贡献自己的力量，我每天都在惆怅，祖国的未统一的和世界的未和平！</p>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
+			<!-- //Scrolling-Articles -->
 
-		    $("#code").show().typewriter();
-            $("#clock-box").fadeIn(500);
-            while (true) {
-                timeElapse(together);
-                $await(Jscex.Async.sleep(1000));
-            }
-        }));
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<!--//experience-->
+	<!-- awards and skills -->
+	<div class="awards-bg-agile" id="skills">
+		<div class="container">
+			<div class="col-md-6 awards-agileits-w3layouts">
+				<div class="title-wthree">
+					<h5 class="title-w3"><span>04</span>奖项</h5>
+					<div class="clearfix"></div>
+				</div>
+				<div class="w3_agileits_services_grids">
+					<div class="col-md-3 w3_agileits_services_grid">
+						<div class="w3_agileits_services_grid_agile">
+							<div class="w3_agileits_services_grid_1 i1">
+								<a class="fa fa-bookmark-o" aria-hidden="true"></a>
+							</div>
+							<h3>NBA总决赛mvp</h3>
+							<p class="para-agileits-w3layouts">在2020年的NBA总决赛中已场均40分15篮板15助攻加冕总决赛mvp！</p>
+						</div>
+					</div>
+					<div class="col-md-3 w3_agileits_services_grid">
+						<div class="w3_agileits_services_grid_agile">
+							<div class="w3_agileits_services_grid_1 i2">
+								<a class="fa fa-television" aria-hidden="true"></a>
+							</div>
+							<h3>LOL世界总决赛冠军</h3>
+							<p class="para-agileits-w3layouts">在2025年带领战队夺得当年的LOL总决赛冠军，把冠军带回了LPL！</p>
+						</div>
+					</div>
+					<div class="col-md-3 w3_agileits_services_grid hvr-overline-from-center">
+						<div class="w3_agileits_services_grid_agile">
+							<div class="w3_agileits_services_grid_1 i3">
+								<a class="fa fa-magic" aria-hidden="true"></a>
+							</div>
+							<h3>世界杯足球先生</h3>
+							<p class="para-agileits-w3layouts">在2018年的俄罗斯世界杯中已场均3粒进球数加冕为王！</p>
+						</div>
+					</div>
+					<div class="col-md-3 w3_agileits_services_grid">
+						<div class="w3_agileits_services_grid_agile">
+							<div class="w3_agileits_services_grid_1 i4">
+								<a class="fa fa-trophy" aria-hidden="true"></a>
+							</div>
+							<h3>我是歌手冠军</h3>
+							<p class="para-agileits-w3layouts">在2019年的我是歌手节目中周杰伦组夺得当年冠军！</p>
+						</div>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+			<div class="col-md-6 skills-w3layouts">
+				<div class="title-wthree">
+					<h5 class="title-w3"><span>05</span>技能</h5>
+					<div class="clearfix"></div>
+				</div>
+				<div class="skill-main-agileits">
+					<p class="p1">95%</p>
+					<h4>吹 牛</h4>
+				</div>
+				<div class="skill-main-agileits">
+					<p class="p2">86%</p>
+					<h4>唱 歌</h4>
+				</div>
+				<div class="skill-main-agileits">
+					<p class="p3">72%</p>
+					<h4>打 篮 球</h4>
+				</div>
+				<div class="skill-main-agileits">
+					<p class="p4">82%</p>
+					<h4>编 程</h4>
+				</div>
+				<div class="skill-main-agileits">
+					<p class="p5">65%</p>
+					<h4>游 泳</h4>
+				</div>
+				<div class="skill-main-agileits">
+					<p class="p6">93%</p>
+					<h4>做 饭</h4>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //awards and skills -->
+	<!-- language -->
+	<div class="language-skills">
+		<div class="container">
+			<div class="col-md-6 lang-left-w3-agile">
+				<div class="title-wthree">
+					<h5 class="title-w3">语言技能</h5>
+					<div class="clearfix"></div>
+				</div>
+				<p class="para-agileits-w3layouts">Towering genius disdains a beaten path It seeks regions hitherto unexplored.</p>
+				<p class="para-agileits-w3layouts">“卓越的天才不屑走旁人走过的路。他寻找迄今未开拓的地区。”</p>
+			</div>
+			<div class="col-md-6 w3l_about_bottom_grid_right bar-grids">
+				<h6>英语<span> 100% </span></h6>
+				<div class="progress">
+					<div class="progress-bar progress-bar-striped active" style="width: 100%">
+					</div>
+				</div>
+				<div class="mid-bar">
+					<h6>德语<span> 85% </span></h6>
+					<div class="progress">
+						<div class="progress-bar progress-bar-striped active" style="width: 85%">
+						</div>
+					</div>
+				</div>
+				<h6>法语<span>67% </span></h6>
+				<div class="progress">
+					<div class="progress-bar progress-bar-striped active" style="width: 67%">
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+	<!-- //language -->
+	<!-- gallery -->
+	<div class="gallery" id="portfolio">
+		<div class="container">
+			<div class="title-wthree">
+				<h5 class="title-w3"><span>07</span>组合管理</h5>
+				<div class="clearfix"></div>
+			</div>
+			<div class="w3ls_gallery_grids">
+				<div class="col-md-4 w3_agile_gallery_grid">
+					<div class="agile_gallery_grid">
+						<a title="Donec sapien massa, placerat ac sodales ac, feugiat quis est." href="images/1.jpg">
+							<div class="agile_gallery_grid1">
+								<img src="images/1.jpg" alt=" " class="img-responsive" />
+							</div>
+						</a>
+					</div>
+					<div class="agile_gallery_grid">
+						<a title="Donec sapien massa, placerat ac sodales ac, feugiat quis est." href="images/2.jpg">
+							<div class="agile_gallery_grid1">
+								<img src="images/2.jpg" alt=" " class="img-responsive" />
+							</div>
+						</a>
+					</div>
+					<div class="agile_gallery_grid">
+						<a title="Donec sapien massa, placerat ac sodales ac, feugiat quis est." href="images/3.jpg">
+							<div class="agile_gallery_grid1">
+								<img src="images/3.jpg" alt=" " class="img-responsive" />
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="col-md-4 w3_agile_gallery_grid">
+					<div class="agile_gallery_grid">
+						<a title="Donec sapien massa, placerat ac sodales ac, feugiat quis est." href="images/4.jpg">
+							<div class="agile_gallery_grid1">
+								<img src="images/4.jpg" alt=" " class="img-responsive" />
+							</div>
+						</a>
+					</div>
+					<div class="agile_gallery_grid">
+						<a title="Donec sapien massa, placerat ac sodales ac, feugiat quis est." href="images/5.jpg">
+							<div class="agile_gallery_grid1">
+								<img src="images/5.jpg" alt=" " class="img-responsive" />
+							</div>
+						</a>
+					</div>
+					<div class="agile_gallery_grid">
+						<a title="Donec sapien massa, placerat ac sodales ac, feugiat quis est." href="images/6.jpg">
+							<div class="agile_gallery_grid1">
+								<img src="images/6.jpg" alt=" " class="img-responsive" />
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="col-md-4 w3_agile_gallery_grid">
+					<div class="agile_gallery_grid">
+						<a title="Donec sapien massa, placerat ac sodales ac, feugiat quis est." href="images/7.jpg">
+							<div class="agile_gallery_grid1">
+								<img src="images/7.jpg" alt=" " class="img-responsive" />
+							</div>
+						</a>
+					</div>
+					<div class="agile_gallery_grid">
+						<a title="Donec sapien massa, placerat ac sodales ac, feugiat quis est." href="images/8.jpg">
+							<div class="agile_gallery_grid1">
+								<img src="images/8.jpg" alt=" " class="img-responsive" />
+							</div>
+						</a>
+					</div>
+					<div class="agile_gallery_grid">
+						<a title="Donec sapien massa, placerat ac sodales ac, feugiat quis est." href="images/9.jpg">
+							<div class="agile_gallery_grid1">
+								<img src="images/9.jpg" alt=" " class="img-responsive" />
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!-- //gallery -->
 
-        var runAsync = eval(Jscex.compile("async", function () {
-            $await(seedAnimate());
-            $await(growAnimate());
-            $await(flowAnimate());
-            $await(moveAnimate());
+	<!-- footer -->
 
-            textAnimate().start();
+	<!-- contact -->
+	<div class="contact-agileits-w3layouts" id="contact">
+		<div class="contact-right-wthree">
+			<div class="container">
+				<div class="title-wthree">
+					<h5 class="title-w3"><span>08</span>联系我</h5>
+					<div class="clearfix"></div>
+				</div>
+				<div class="address-w3layouts">
+					<p class="para-agileits-w3layouts">老朋友，期待与你的相遇！</p>
+					<h4><a href="mailto:info@example.com">zgahwuqiankun@qq.com</a></h4>
+					<h6>QQ:302647883</h6>
+					<h6>wechat：zgahwuqiankun</h6>
+					<p class="para-agileits-w3layouts">上海市杨浦区军工路516号上海理工大学</p>
+				</div>
+				<div class="botttom-nav-agileits">
+					<div class="w3l-social">
+						<ul>
+							<li><a href="#" class="fa fa-facebook"></a></li>
+							<li><a href="#" class="fa fa-twitter"></a></li>
+							<li><a href="#" class="fa fa-google-plus"></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
 
-            $await(jumpAnimate());
-        }));
+			</div>
+		</div>
+		<div class="wthree-form">
+			<div class="container">
+				<div class="col-md-6 contact-form agile_inner_grids">
+					<h5 class="title-w3">打个招呼吧</h5>
+					<form action="#" method="post">
+						<div class="fields-grid">
+							<div class="styled-input">
+								<input type="text" name="Full Name" placeholder="姓名" required="">
+							</div>
+							<div class="styled-input">
+								<input type="email" name="Email" placeholder="邮件" required="">
+							</div>
+							<div class="styled-input">
+								<input type="text" name="Subject" placeholder="主页" required="">
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<div class="styled-input textarea-grid">
+							<textarea name="Message" placeholder="留言" required=""></textarea>
+						</div>
+						<input type="submit" value="提交">
+					</form>
+				</div>
+				<!---<div class="col-md-6 map-w3-agileits">
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2477.523147399147!2d-0.18136368416846532!3d51.61362537965271!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487619e5c86f6147%3A0x7f009116a7f24760!2sNether+Street+Apartment!5e0!3m2!1sen!2sin!4v1501221607097"></iframe>
+				</div>--->
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!-- //contact -->
+	<!-- Footer -->
+	<div class="copyright-wthree">
+		<div class="container">
+			<p>Copyright &copy; 2017.USST WQK.<a target="_blank" href="https://github.com/Ezra521">github</a></p>
+		</div>
+	</div>
+	<!-- //Footer -->
 
-        runAsync().start();
-    })();
-    </script>
+	<a href="#home" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+	<!-- //smooth scrolling -->
+	<script type='text/javascript' src='js/jquery-2.2.3.min.js'></script>
+	<!-- start-smoth-scrolling -->
+	<!--gallery -->
+	<script src="js/jquery.chocolat.js"></script>
+	<link rel="stylesheet" href="css/chocolat.css" type="text/css" media="screen">
+	<!--light-box-files -->
+	<script type="text/javascript">
+		$(function () {
+			$('.w3_agile_gallery_grid a').Chocolat();
+		});
+	</script>
+	<!-- //gallery -->
+	<script type="text/javascript" src="js/move-top.js"></script>
+	<script type="text/javascript" src="js/easing.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function ($) {
+			$(".scroll").click(function (event) {
+				event.preventDefault();
+				$('html,body').animate({
+					scrollTop: $(this.hash).offset().top
+				}, 1000);
+			});
+		});
+	</script>
+	<!-- start-smoth-scrolling -->
+	<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function () {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			*/
 
+			$().UItoTop({
+				easingType: 'easeOutQuart'
+			});
 
+		});
+	</script>
+	<!-- //here ends scrolling icon -->
+	<!--js for bootstrap working-->
+	<script src="js/bootstrap.js"></script>
+	<!-- //for bootstrap working -->
 </body>
+
 </html>
