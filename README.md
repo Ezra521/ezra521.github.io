@@ -1,1 +1,1 @@
-# ezra521.io
+# myblog.io
